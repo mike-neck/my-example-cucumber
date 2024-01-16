@@ -21,6 +21,7 @@ Then('A little girl was standing alone on the hill') do
   wait.until { @driver.title.start_with? 'ハイター 勇者ヒンメルなら' }
   keyword = "Google 検索"
   keyword = "Google Search" if ENV["GITHUB_ACTIONS"] == true
-  expect(@driver.title).to end_with(keyword)
+  expect(@driver.title).to end_with(keyword),
+                           "actual: #{@driver.title} expected: #{keyword}, params: #{ENV['GITHUB_ACTIONS']}"
   @driver.close
 end
