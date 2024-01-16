@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+readonly pathToRbenv="$(which rbenv || echo "")"
+if [[ -z "${pathToRbenv}" ]]; then
+  echo "cannot run ruby because no rbenv installed" > /dev/stderr
+  exit 1
+elif [[ ! -x "${pathToRbenv}" ]]; then
+  echo "cannot run ruby because rbenv[${pathToRbenv}] is not executable" > /dev/stderr
+  exit 1
+fi
+
+"${pathToRbenv}" exec "${@}"
