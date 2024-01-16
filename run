@@ -9,4 +9,9 @@ elif [[ ! -x "${pathToRbenv}" ]]; then
   exit 1
 fi
 
-"${pathToRbenv}" exec "${@}"
+function fail() {
+    echo "FAILURE!!" > /dev/stderr
+    exit 4
+}
+
+"${pathToRbenv}" exec "${@}" || fail
