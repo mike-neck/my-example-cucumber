@@ -1,11 +1,6 @@
+require_relative '../../lib/my_example_tutorial.rb'
 module FridayStepHelper
-  def is_it_friday(day)
-    if day == 'Friday'
-      'TGIF'
-    else
-      'Nope'
-    end
-  end
+  include MyExampleTutorial
 end
 World FridayStepHelper
 
