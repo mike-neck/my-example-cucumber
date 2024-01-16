@@ -1,7 +1,11 @@
 require 'selenium-webdriver'
 
 Given('he was on a hill near a city destroyed by the attack') do
-  @driver = Selenium::WebDriver.for :chrome
+  if ENV["GITHUB_ACTIONS"] == true
+    @driver = Selenium::WebDriver.for :remote, desired_capabilities: :chrome
+  else
+    @driver = Selenium::WebDriver.for :chrome
+  end
   @driver.get 'https://www.google.jp'
 end
 
