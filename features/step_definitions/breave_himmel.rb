@@ -19,6 +19,8 @@ end
 Then('A little girl was standing alone on the hill') do
   wait = Selenium::WebDriver::Wait.new(timeout: 10)
   wait.until { @driver.title.start_with? 'ハイター 勇者ヒンメルなら' }
-  expect(@driver.title).to end_with("Google 検索")
+  keyword = "Google 検索"
+  keyword = "Google Search" if ENV["GITHUB_ACTIONS"] == true
+  expect(@driver.title).to end_with(keyword)
   @driver.close
 end
