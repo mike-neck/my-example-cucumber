@@ -23,9 +23,11 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
 
-      - name: Set up Chrome
+      - id: chrome
+        name: Set up Chrome
         uses: browser-actions/setup-chrome@v1
-        id: chrome
+        with:
+          chrome-version: 120
 
       - name: Chrome Version
         run: "${{ steps.chrome.outputs.chrome-path }}" "--version"
