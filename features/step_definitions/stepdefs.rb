@@ -9,15 +9,11 @@ module FridayStepHelper
 end
 World FridayStepHelper
 
-Given("today is Sunday") do
-  @today = 'Sunday'
+Given("today is {string}") do |given_day|
+  @today = given_day
 end
 
-Given("today is Friday") do
-  @today = 'Friday'
-end
-
-When("I as whether it's Friday yet") do
+When("I ask whether it's Friday yet") do
   @actual_answer = is_it_friday(@today)
 end
 
