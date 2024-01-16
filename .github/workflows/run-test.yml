@@ -1,0 +1,30 @@
+name: Ruby
+
+on:
+  push:
+    branches:
+      - main
+      - feature/*
+      - fix/*
+  pull_request:
+    branches:
+      - main
+      - feature/*
+      - fix/*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install dependencies
+        run: bundle install
+
+      - name: Run tests
+        run: bundle exec cucumber
