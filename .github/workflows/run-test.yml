@@ -29,8 +29,8 @@ jobs:
         with:
           chrome-version: 120
 
-      - name: Chrome Version
-        run: "${{ steps.chrome.outputs.chrome-path }}" "--version"
+      - run: ${{ steps.chrome.outputs.chrome-path }} "--version"
+        name: Show Chrome Version
 
       - name: Install dependencies
         run: bundle install
