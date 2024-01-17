@@ -17,3 +17,13 @@ Feature: Value Class functionality
       | 2      | "two"          | two      |
       | 15     |                | fizzbuzz |
       | 22     |                | 22       |
+
+  Scenario Outline: Testing append method of Value
+    Given a Value with a number <number> and processed value is "<processedValue>"
+    When called append method with a string <param>
+    Then it becomes a new Value with <another_number> and <another_value>
+
+    Examples:
+      | number | processedValue | param | another_number | another_value |
+      | 1      |                | foo   | 1              | foo           |
+      | 1      | foo            | bar   | 1              | foobar        |

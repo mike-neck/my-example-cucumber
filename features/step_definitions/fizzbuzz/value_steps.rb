@@ -15,3 +15,12 @@ end
 Then('it should return the string {string}') do |string|
   expect(@actual_answer).to eq(string)
 end
+
+When(/called append method with a string (.+)/) do |string|
+  @actual_answer = @value.append string
+end
+
+Then(/^it becomes a new Value with (\d+) and (.*)$/) do |int, string|
+  expected = Value.new int, string
+  expect(@actual_answer).to eq(expected)
+end
